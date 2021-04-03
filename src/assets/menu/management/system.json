@@ -1,0 +1,17 @@
+[
+  {
+    "name": "角色管理",
+    "path": "/management/system/roles",
+    "icon": "home"
+  },
+  {
+    "name": "用户管理",
+    "path": "/management/system/users",
+    "icon": "user"
+  },
+  {
+    "name": "部门管理",
+    "path": "/management/system/departments",
+    "icon": "usergroup-add"
+  }
+]

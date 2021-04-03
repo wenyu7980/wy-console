@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MultiTabService } from '../../../../commons/components/multi-tab/multi-tab.service';
+import { MultiTabService } from '@common-components/multi-tab';
 
 @Component({
   selector: 'app-role-list-page',

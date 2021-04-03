@@ -1,0 +1,21 @@
+.main {
+  @header-high: 3em;
+
+  & > nz-header {
+    height: @header-high;
+  }
+
+  & > nz-layout {
+    & > nz-sider {
+      color: white;
+      height: calc(100vh - @header-high);
+    }
+
+    & > nz-content {
+      padding: 10px;
+      height: calc(100vh - @header-high);
+      overflow: auto;
+      background: #f2f2f2;
+    }
+  }
+}

@@ -52,8 +52,8 @@ export class MultiTabComponent implements OnInit, OnDestroy {
       map((event: NavigationEnd) => {
         const route = this.getChild(this.activatedRoute);
         return {
-          path: event.url.split('?')[0],
-          title: route.snapshot.data.title ?? event.url,
+          path: event.urlAfterRedirects.split('?')[0],
+          title: event.urlAfterRedirects,
           params: route.snapshot.queryParams
         };
       })

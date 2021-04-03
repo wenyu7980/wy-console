@@ -8,6 +8,7 @@ const routes: Routes = [
     component: ManagementPageComponent,
     children: [
       { path: 'system', loadChildren: () => import('./system/system.module').then(m => m.SystemModule) },
+      { path: 'person', loadChildren: () => import('./person/person.module').then(m => m.PersonModule) },
       { path: '**', redirectTo: 'system' }
     ]
   }

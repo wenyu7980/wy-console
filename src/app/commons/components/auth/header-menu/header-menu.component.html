@@ -1,0 +1,5 @@
+<ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+  <li nz-menu-item *ngFor="let menu of menus" [nzSelected]="menu.selected" (click)="select(menu.path)">
+    {{menu.name}}
+  </li>
+</ul>

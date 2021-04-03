@@ -18,7 +18,10 @@
     ],
     "paths": {
       "@commons": [
-        "src/app/commons/commons/commons-api"
+        "src/app/commons/commons"
+      ],
+      "@common-components/*": [
+        "src/app/commons/components/*"
       ]
     }
   },
