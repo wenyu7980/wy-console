@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MultiTabComponent } from './multi-tab/multi-tab.component';
+import { MultiTabsComponent } from './multi-tabs/multi-tabs.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { RouterModule } from '@angular/router';
 
-export * from './multi-tab.service';
+export * from './multi-tabs.service';
 
 @NgModule({
-  declarations: [MultiTabComponent],
+  declarations: [MultiTabsComponent],
   exports: [
-    MultiTabComponent
+    MultiTabsComponent
   ],
   imports: [
     CommonModule,
@@ -17,5 +17,5 @@ export * from './multi-tab.service';
     NzTabsModule,
   ]
 })
-export class MultiTabModule {
+export class MultiTabsModule {
 }

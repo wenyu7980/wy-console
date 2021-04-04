@@ -1,1 +1,1 @@
-export * from './multi-tab.module';
+export * from './multi-tabs.module';

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ManagementRoutingModule } from './management-routing.module';
 import { ManagementPageComponent } from './management-page/management-page.component';
-import { MultiTabModule } from '@common-components/multi-tab';
+import { MultiTabsModule } from '@common-components/multi-tab';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
@@ -16,7 +16,7 @@ import { AuthModule } from '@common-components/auth';
     CommonModule,
     ManagementRoutingModule,
     AuthModule,
-    MultiTabModule,
+    MultiTabsModule,
     NzLayoutModule,
     NzMenuModule,
     NzCollapseModule,

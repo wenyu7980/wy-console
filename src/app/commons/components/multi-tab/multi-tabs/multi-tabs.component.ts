@@ -1,16 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscriber, Subscription } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { MultiTabService } from '../multi-tab.service';
+import { MultiTabsService } from '../multi-tabs.service';
 import { filter, map } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'app-multi-tab',
-  templateUrl: './multi-tab.component.html',
-  styleUrls: ['./multi-tab.component.less']
+  selector: 'app-multi-tabs',
+  templateUrl: './multi-tabs.component.html',
+  styleUrls: ['./multi-tabs.component.less']
 })
-export class MultiTabComponent implements OnInit, OnDestroy {
+export class MultiTabsComponent implements OnInit, OnDestroy {
 
   selectedIndex: number;
   tabs: Tab[];
@@ -20,7 +20,7 @@ export class MultiTabComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private multiTabService: MultiTabService
+    private multiTabService: MultiTabsService
   ) {
   }
 

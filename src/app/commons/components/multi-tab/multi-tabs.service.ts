@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class MultiTabService {
+export class MultiTabsService {
 
   private subscriber$: Subscriber<{ path: string; title: string }>;
   private readonly observable$: Observable<{ path: string; title: string }>;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MultiTabsService } from '@common-components/multi-tab';
 
 @Component({
   selector: 'app-user-list-page',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private multiTabsService: MultiTabsService) {
+  }
 
   ngOnInit(): void {
+    this.multiTabsService.setTabTitle('用户管理');
   }
 
 }

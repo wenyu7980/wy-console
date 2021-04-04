@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MultiTabService } from '@common-components/multi-tab';
+import { MultiTabsService } from '@common-components/multi-tab';
 
 @Component({
   selector: 'app-role-list-page',
@@ -8,7 +8,7 @@ import { MultiTabService } from '@common-components/multi-tab';
 })
 export class RoleListPageComponent implements OnInit {
 
-  constructor(private multiTabService: MultiTabService) {
+  constructor(private multiTabService: MultiTabsService) {
   }
 
   ngOnInit(): void {
