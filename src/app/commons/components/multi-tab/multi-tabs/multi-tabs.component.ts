@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscriber, Subscription } from 'rxjs';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, ResolveEnd, Router } from '@angular/router';
 import { MultiTabsService } from '../multi-tabs.service';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 
 
 @Component({
@@ -47,9 +47,9 @@ export class MultiTabsComponent implements OnInit, OnDestroy {
     // 路由变化
     this.router.events.pipe(
       filter(
-        event => event instanceof NavigationEnd
+        event => event instanceof ResolveEnd
       ),
-      map((event: NavigationEnd) => {
+      map((event: ResolveEnd) => {
         const route = this.getChild(this.activatedRoute);
         return {
           path: event.urlAfterRedirects.split('?')[0],
