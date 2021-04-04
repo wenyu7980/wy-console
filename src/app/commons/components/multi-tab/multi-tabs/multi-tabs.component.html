@@ -1,5 +1,7 @@
-<nz-tabset [nzSelectedIndex]="selectedIndex" nzType="editable-card" nzHideAdd nzSize="small"
+<nz-tabset style="z-index: 1000" [nzSelectedIndex]="selectedIndex" nzType="editable-card" nzHideAdd nzSize="small"
            (nzClose)="closeTab($event)">
-  <nz-tab style="border-radius:2em;" [nzClosable]="tabs.length>1" *ngFor="let tab of tabs;let i = index;" [nzTitle]="tab.title"
-          (nzClick)="clickTab(i)"></nz-tab>
+  <nz-tab [nzClosable]="tabs.length>1" *ngFor="let tab of tabs;let i = index;"
+          [nzTitle]="tab.title"
+          (nzClick)="clickTab(i)">
+  </nz-tab>
 </nz-tabset>

@@ -9,6 +9,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(zh);
 
@@ -18,6 +19,7 @@ registerLocaleData(zh);
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     NzMessageModule,

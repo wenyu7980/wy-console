@@ -4,5 +4,5 @@ export interface MenuConfig {
   /** 路径 */
   path: string;
   /** 子菜单数据路径 */
-  data: string;
+  data?: string;
 }

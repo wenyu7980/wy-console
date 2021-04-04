@@ -1,1 +1,14 @@
-<p>setting-page works!</p>
+<div style="background: white;min-height: 80vh">
+  <nz-tabset nzLinkRouter nzTabPosition="left">
+    <nz-tab>
+      <a *nzTabLink nz-tab-link [routerLink]="['.']" [queryParams]="{ tab: 'setting' }"
+         queryParamsHandling="merge" style="color: black">个人信息设置</a>
+      个人信息设置
+    </nz-tab>
+    <nz-tab>
+      <a *nzTabLink nz-tab-link [routerLink]="['.']" [queryParams]="{ tab: 'password' }"
+         queryParamsHandling="merge" style="color: black">密码设置</a>
+      密码设置
+    </nz-tab>
+  </nz-tabset>
+</div>

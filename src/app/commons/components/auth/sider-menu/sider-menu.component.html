@@ -5,7 +5,7 @@
       <li
         *ngIf="!menu.children"
         nz-menu-item
-        [nzPaddingLeft]="menu.level * 24"
+        [nzPaddingLeft]="menu.level * 20"
         [nzSelected]="menu.selected"
         [routerLink]="[menu.path]"
       >
@@ -21,7 +21,8 @@
         [nzIcon]="menu.icon"
       >
         <ul>
-          <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children,level:level+1 }"></ng-container>
+          <ng-container
+            *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children,level:level+1 }"></ng-container>
         </ul>
       </li>
     </ng-container>

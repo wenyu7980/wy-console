@@ -1,14 +1,17 @@
 {
   "management": [
     {
-      "name": "系统配置",
+      "name": "首页",
+      "path": "/management/home"
+    },
+    {
+      "name": "系统管理",
       "path": "/management/system",
       "data": "/assets/menu/management/system.json"
     },
     {
       "name": "个人设置",
-      "path": "/management/person",
-      "data": "/assets/menu/management/person.json"
+      "path": "/management/person"
     }
   ]
 }

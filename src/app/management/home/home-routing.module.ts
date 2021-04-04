@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SettingPageComponent } from './setting-page/setting-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', component: SettingPageComponent, },
+  { path: '', component: HomePageComponent, },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
@@ -11,5 +11,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PersonRoutingModule {
+export class HomeRoutingModule {
 }

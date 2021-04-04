@@ -16,6 +16,8 @@ export class CustomErrorHandler extends ErrorHandler {
   handleError(error: any): void {
     if (error instanceof HttpErrorResponse) {
       this.messageService.error(error.message);
+    } else {
+      console.error(error);
     }
   }
 }
