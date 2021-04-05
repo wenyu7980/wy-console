@@ -1,7 +1,21 @@
-<nz-tabset style="z-index: 1000" [nzSelectedIndex]="selectedIndex" nzType="editable-card" nzHideAdd nzSize="small"
-           (nzClose)="closeTab($event)">
+<nz-tabset
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event)"
+  [nzSelectedIndex]="selectedIndex"
+  nzType="editable-card"
+  nzHideAdd
+  nzSize="small"
+  (nzClose)="closeTab($event)">
   <nz-tab [nzClosable]="tabs.length>1" *ngFor="let tab of tabs;let i = index;"
-          [nzTitle]="tab.title"
+          [nzTitle]="titleTemplate"
           (nzClick)="clickTab(i)">
+    <ng-template #titleTemplate>
+      <div style="display: inline;" cdkDrag>
+        <div *cdkDragPlaceholder></div>
+        {{ tab.title }}
+      </div>
+    </ng-template>
   </nz-tab>
 </nz-tabset>
+<!--style="z-index: 1000"-->

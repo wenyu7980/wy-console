@@ -3,6 +3,7 @@ import { Observable, Subscriber, Subscription } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, ResolveEnd, Router } from '@angular/router';
 import { MultiTabsService } from '../multi-tabs.service';
 import { filter, map } from 'rxjs/operators';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -117,6 +118,10 @@ export class MultiTabsComponent implements OnInit, OnDestroy {
     this.subject$.unsubscribe();
   }
 
+  drop(event: CdkDragDrop<string[]>): void {
+    moveItemInArray(this.tabs, event.previousIndex, event.currentIndex);
+    this.setTabsToStorage();
+  }
 }
 
 interface Tab {
