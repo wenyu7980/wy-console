@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { filter, map, tap } from 'rxjs/operators';
@@ -24,6 +24,8 @@ export class SiderMenuComponent implements OnInit, OnDestroy {
   menuConfigs: MenuConfig[];
   @Input()
   role: string;
+  @Output()
+  display: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     private httpClient: HttpClient,
@@ -36,6 +38,11 @@ export class SiderMenuComponent implements OnInit, OnDestroy {
     }).subscribe(url => {
       for (const config of this.menuConfigs) {
         if (url.startsWith(config.path)) {
+          if (!config.data) {
+            Promise.resolve().then(() => this.display.emit(false));
+            return;
+          }
+          Promise.resolve().then(() => this.display.emit(true));
           if (!this.menuMap.has(config.data)) {
             this.httpClient.get<MenuItem[]>(config.data)
               .pipe(tap(data => this.menuMap.set(config.data, data)))

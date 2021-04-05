@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./management-page.component.less'],
 })
 export class ManagementPageComponent implements OnInit {
+  siderDisplay: boolean;
 
   constructor() {
   }

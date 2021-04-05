@@ -5,7 +5,12 @@
     height: @header-high;
   }
 
+
   & > nz-layout {
+    & > nz-sider {
+      height: calc(100vh - @header-high);
+    }
+
     .content {
       padding: 5px 10px 10px 10px;
       height: calc(100vh - @header-high);

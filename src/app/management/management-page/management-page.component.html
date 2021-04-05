@@ -3,13 +3,14 @@
     <app-header-menu role="management"></app-header-menu>
   </nz-header>
   <nz-layout>
-    <app-layout-menu role="management">
-      <nz-content class="content">
-        <app-multi-tabs></app-multi-tabs>
-        <div style="padding: 0px 10px 0px 10px;">
-          <router-outlet></router-outlet>
-        </div>
-      </nz-content>
-    </app-layout-menu>
+    <nz-sider [ngStyle]="{display: siderDisplay?'':'none'}" nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+      <app-sider-menu role="management" (display)="siderDisplay=$event"></app-sider-menu>
+    </nz-sider>
+    <nz-content class="content">
+      <app-multi-tabs></app-multi-tabs>
+      <div style="padding: 0px 10px 0px 10px;">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
   </nz-layout>
 </nz-layout>

@@ -35,14 +35,14 @@ export class MultiTabsComponent implements OnInit, OnDestroy {
         if (tab.path === value.path) {
           tab.title = tab.title ?? value.title;
           tab.params = value.params;
-          this.selectedIndex = index;
           this.setTabsToStorage();
+          Promise.resolve().then(() => this.selectedIndex = index);
           return;
         }
       }
       this.tabs.push(value);
-      this.selectedIndex = this.tabs.length - 1;
       this.setTabsToStorage();
+      Promise.resolve().then(() => this.selectedIndex = this.tabs.length - 1);
     });
     // 路由变化
     this.router.events.pipe(
