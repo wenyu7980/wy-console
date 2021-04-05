@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscriber, Subscription } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, ResolveEnd, Router } from '@angular/router';
 import { MultiTabsService } from '../multi-tabs.service';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { NzContextMenuService, NzDropdownMenuComponent } from 'ng-zorro-antd/dropdown';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class MultiTabsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private multiTabService: MultiTabsService
+    private multiTabService: MultiTabsService,
+    private nzContextMenuService: NzContextMenuService,
   ) {
   }
 
@@ -34,22 +36,23 @@ export class MultiTabsComponent implements OnInit, OnDestroy {
     }).subscribe(value => {
       for (const [index, tab] of this.tabs.entries()) {
         if (tab.path === value.path) {
-          tab.title = tab.title ?? value.title;
+          tab.title = tab.title === value.path ? value.title : tab.title;
           tab.params = value.params;
+          setTimeout(() => this.selectedIndex = index, 0);
           this.setTabsToStorage();
-          Promise.resolve().then(() => this.selectedIndex = index);
           return;
         }
       }
       this.tabs.push(value);
       this.setTabsToStorage();
-      Promise.resolve().then(() => this.selectedIndex = this.tabs.length - 1);
+      setTimeout(() => this.selectedIndex = this.tabs.length - 1, 0);
     });
     // 路由变化
     this.router.events.pipe(
       filter(
         event => event instanceof ResolveEnd || event instanceof NavigationEnd
       ),
+      tap(v => console.log(v)),
       map((event: ResolveEnd) => {
         const route = this.getChild(this.activatedRoute);
         return {
@@ -121,6 +124,33 @@ export class MultiTabsComponent implements OnInit, OnDestroy {
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.tabs, event.previousIndex, event.currentIndex);
     this.setTabsToStorage();
+  }
+
+  contentMenu($event: MouseEvent, i: number, menu: NzDropdownMenuComponent): void {
+    this.nzContextMenuService.create($event, menu);
+  }
+
+  closeOther(i: number): void {
+    this.tabs = [this.tabs[i]];
+    this.clickTab(0);
+    this.setTabsToStorage();
+  }
+
+  closeRight(i: number): void {
+    this.tabs = this.tabs.slice(0, i + 1);
+    this.clickTab(this.tabs.length - 1);
+    this.setTabsToStorage();
+  }
+
+  closeLeft(i: number): void {
+    this.tabs = this.tabs.slice(i, this.tabs.length);
+    this.clickTab(0);
+    this.setTabsToStorage();
+  }
+
+  closeAll(): void {
+    this.tabs = [];
+    this.router.navigate(['.']).then();
   }
 }
 

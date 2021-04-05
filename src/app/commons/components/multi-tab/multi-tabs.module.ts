@@ -4,6 +4,8 @@ import { MultiTabsComponent } from './multi-tabs/multi-tabs.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { RouterModule } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 export * from './multi-tabs.service';
 
@@ -17,6 +19,8 @@ export * from './multi-tabs.service';
     RouterModule,
     NzTabsModule,
     DragDropModule,
+    NzDropDownModule,
+    NzMenuModule,
   ]
 })
 export class MultiTabsModule {

@@ -7,15 +7,23 @@
   nzHideAdd
   nzSize="small"
   (nzClose)="closeTab($event)">
-  <nz-tab [nzClosable]="tabs.length>1" *ngFor="let tab of tabs;let i = index;"
+  <nz-tab [nzClosable]="tabs.length>1" *ngFor="let tab of tabs;let i = index;let first=first;let last = last;"
           [nzTitle]="titleTemplate"
           (nzClick)="clickTab(i)">
     <ng-template #titleTemplate>
-      <div style="display: inline;" cdkDrag>
+      <div style="display: inline;" cdkDrag (contextmenu)="contentMenu($event,i,menu)">
         <div *cdkDragPlaceholder></div>
         {{ tab.title }}
       </div>
     </ng-template>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item (click)="closeLeft(i)" [nzDisabled]="first">关闭左侧</li>
+        <li nz-menu-item (click)="closeOther(i)">关闭其他</li>
+        <li nz-menu-item (click)="closeRight(i)" [nzDisabled]="last">关闭右侧</li>
+        <!--        <li nz-menu-item (click)="closeAll()">关闭全部</li>-->
+      </ul>
+    </nz-dropdown-menu>
   </nz-tab>
 </nz-tabset>
 <!--style="z-index: 1000"-->
